@@ -5,18 +5,16 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClient } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
-import { UserListComponent } from './components/lists/user-list/user-list.component';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { filter } from 'rxjs';
 import { environment } from '../environments/environment.development';
 import { AuthService } from './services/auth/auth.service';
-import {BreadcrumbComponent} from './components/breadcrumbs/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
-  imports: [NavbarComponent, RouterOutlet, UserListComponent, BreadcrumbComponent],
+  imports: [NavbarComponent, RouterOutlet],
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {

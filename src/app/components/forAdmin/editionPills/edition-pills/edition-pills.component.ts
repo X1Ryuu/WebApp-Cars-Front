@@ -1,7 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {LoginComponent} from "../../../logForm/login/login.component";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
-import {RegisterComponent} from "../../../logForm/register/register.component";
 import {BrandEditionComponent} from '../brand-edition/brand-edition.component';
 import {ModelEditionComponent} from '../model-edition/model-edition.component';
 import {BreadcrumbComponent} from '../../../breadcrumbs/breadcrumb/breadcrumb.component';
@@ -19,9 +17,9 @@ import {AddModalComponent} from '../../modals/add-modal/add-modal.component';
 
     NgClass,
 
-    NgForOf,
+    /*NgForOf,
     RouterOutlet,
-    RouterLink,
+    RouterLink,*/
     AddModalComponent,
     BrandEditionComponent,
     ModelEditionComponent

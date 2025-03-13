@@ -15,15 +15,31 @@
             <a class="nav-link active" aria-current="page" href="">Home</a>
           </li>
 
-          <li class="nav-item">
+<!--          <li class="nav-item">
             <a class="nav-link active"
-               aria-current="page" routerLink="/vehicles" role="button"><!--Contacts-->Archives</a>
+               aria-current="page" routerLink="/vehicles" role="button">&lt;!&ndash;Contacts&ndash;&gt;Archives</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active"
-               aria-current="page" routerLink="/vehicles" role="button"><!--Contacts-->Available</a>
+               aria-current="page" routerLink="/vehicles" role="button">&lt;!&ndash;Contacts&ndash;&gt;Available</a>
+          </li>-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Vehicles
+            </a>
+            <ul class="dropdown-menu">
+<!--                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>--->
+<!--
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+-->
+                <li>
+                    <a class="nav-link px-3"
+                       routerLink="/vehicles"><!--Contacts-->Archives</a>
+                </li>
+            </ul>
           </li>
-
           <li class="nav-item">
             <a *ngIf="authService.isAdmin" aria-current="page" class="nav-link active" href="http://localhost:8080/h2-console">H2 DB</a>
           </li>

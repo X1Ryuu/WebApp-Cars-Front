@@ -17,9 +17,6 @@ import {Brand} from '../../../entities/brand/brand';
   standalone: true,
   imports: [
     NgForOf,
-    BreadcrumbComponent,
-    ModelComponent,
-    BrandComponent,
     RouterLink,
     ItemComponent
   ],

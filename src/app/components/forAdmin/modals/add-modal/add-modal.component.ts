@@ -6,7 +6,6 @@
   selector: 'app-add-modal',
   standalone: true,
   imports: [
-    NgIf,
     CarAddPillsComponent
   ],
   templateUrl: './add-modal.component.html',

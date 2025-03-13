@@ -1,9 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {Brand}  from '../../../../entities/brand/brand';
 import {BrandService} from '../../../../services/brand/brand-service.service';
-import {RouterLink} from '@angular/router';
-import {FormBuilder, FormGroup, NgForm, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment.development';
 import { OAuthService } from 'angular-oauth2-oidc';
@@ -13,7 +12,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
   standalone: true,
   imports: [
     NgForOf,
-    RouterLink,
+/*    RouterLink,*/
     NgIf,
     ReactiveFormsModule,
   ],

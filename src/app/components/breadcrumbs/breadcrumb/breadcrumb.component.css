@@ -1,0 +1,19 @@
+.container{
+  width: 70%;
+  /*
+  background-color: #0b66b6;
+  */
+
+}
+
+.breadcrumb, .breadcrumb-div{
+  width: 80%;
+  background-color: #C3C3C3;
+}
+
+
+@media (max-width: 576px) {
+  .container{
+    width: 100%;
+  }
+}

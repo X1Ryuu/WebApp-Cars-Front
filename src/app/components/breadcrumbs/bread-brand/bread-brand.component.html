@@ -1,0 +1,16 @@
+
+<!--<p>bread-brand works!</p>-->
+
+<div class="container d-flex flex-wrap  justify-content-center">
+  <div class="brand-item my-2 mx-1" *ngFor="let brand of brands">
+<!--
+    <a (click)="selectBrand(brand)">{{ brand.name }}</a>
+-->
+    <div class="brand-item-container">
+      <app-brand  [brand]="brand" [routerLink]="['/vehicles', brand.name]"></app-brand>
+    </div>
+
+
+  </div>
+</div>
+

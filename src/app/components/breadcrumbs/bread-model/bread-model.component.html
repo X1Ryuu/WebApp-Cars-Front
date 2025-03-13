@@ -1,0 +1,15 @@
+
+<div class="container d-flex flex-wrap justify-content-evenly">
+  <div class="model-item  my-2 mx-1" *ngFor="let model of models">
+    <!--
+        <a (click)="selectBrand(brand)">{{ brand.name }}</a>
+    -->
+    <div class="model-item-container">
+<!--
+      <app-model [model]="model" class="model-container my-1" [routerLink]="[model.nameId]"></app-model>
+-->
+      <app-item [data]="model.name" class="model-container" [routerLink]="[model.name]"></app-item>
+    </div>
+
+  </div>
+</div>

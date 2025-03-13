@@ -1,0 +1,18 @@
+<p>bread-version works!</p>
+
+
+<div class="container d-flex flex-wrap justify-content-evenly">
+  <div class="model-item  my-2 mx-1" *ngFor="let version of versions">
+    <!--
+        <a (click)="selectBrand(brand)">{{ brand.name }}</a>
+    -->
+    <div class="model-item-container">
+      {{version.brandId}}
+      <!--
+            <app-model [model]="model" class="model-container my-1" [routerLink]="[model.nameId]"></app-model>
+      -->
+      <app-item [data]="version.name + ' (' + version.startYear + ' - ' + version.endYear + ')'" [routerLink]="[version.nameId]"></app-item>
+    </div>
+
+  </div>
+</div>

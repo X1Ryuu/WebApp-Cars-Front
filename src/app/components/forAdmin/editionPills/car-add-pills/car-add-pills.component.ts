@@ -212,7 +212,13 @@ export class CarAddPillsComponent implements OnInit {
       }
   }
 
-  submitGeneration(){}
+  submitGeneration(){
+    console.log(this.generationForm.value, this.generationForm.valid)
+    if(this.generationForm.valid){
+      //this.generationService.addGeneration()
+      //this.generationService
+    }
+  }
 
 
   submitVersion() {

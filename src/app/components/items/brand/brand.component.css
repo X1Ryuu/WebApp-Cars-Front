@@ -39,24 +39,24 @@
 }
 */
 
-.main-brand-container{
+/*.main-brand-container{
   background-color: #34495e;
 
   align-items: center;
-  border: 1px solid #ccc; /* Obramowanie */
-  border-radius: 8px; /* Zaokrąglenia */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Cień */
-}
+  border: 1px solid #ccc; !* Obramowanie *!
+  border-radius: 8px; !* Zaokrąglenia *!
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); !* Cień *!
+}*/
 .img-container{
   aspect-ratio: 1/1;
 /*  width: 100%;*/
   margin: auto;
-  background-color: #c13584;
+  background-color: white;
 }
-.brand-name-container{
+/*.brand-name-container{
   background-color: #27288a;
   width: 100%;
-}
+}*/
 
 
 /*@media (max-width: 600px) {

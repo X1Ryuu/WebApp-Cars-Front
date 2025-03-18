@@ -39,16 +39,18 @@
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
+
+            <!--Brand Form-->
           <div *ngIf="activeTab === 'brands'">
             <h2 class="mb-4">Add Brand</h2>
             <form [formGroup]="brandForm" (ngSubmit)="submitBrand()">
               <div class="mb-3">
-                <label class="form-label">Brand Name</label>
-                <input type="text" class="form-control" formControlName="name" placeholder="Enter brand name" required>
+                <label class="form-label" for="bName" >Brand Name</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter brand name" required id="bName">
               </div>
               <div class="mb-3">
                 <label class="form-label">Brand Logo URL</label>
-                <input type="text" class="form-control" formControlName="logo" placeholder="Enter logo URL">
+                <input type="text" class="form-control" formControlName="logo" placeholder="Enter logo URL" id="bLogo">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -56,18 +58,20 @@
               </div>
             </form>
           </div>
+
+            <!--Model Form-->
           <div *ngIf="activeTab === 'models'">
             <h2 class="mb-4">Add Model</h2>
             <form [formGroup]="modelForm" (ngSubmit)="submitModel()">
               <div class="mb-3 ms-auto me-auto">
-                <label class="form-label">Select Brand</label>
-                <select class="form-select" formControlName="brandName">
+                <label class="form-label" id=>Select Brand</label>
+                <select class="form-select" formControlName="brandName" id="mBrandSel">
                   <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
                 </select>
               </div>
               <div class="mb-3">
                 <label class="form-label">Model Name</label>
-                <input type="text" class="form-control" formControlName="name" placeholder="Enter model name">
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter model name" id="mName">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -75,6 +79,8 @@
               </div>
             </form>
           </div>
+
+            <!--Generation Form-->
           <div *ngIf="activeTab === 'generations'">
             <h2 class="mb-4">Add Generation</h2>
             <form [formGroup]="generationForm" (ngSubmit)="submitGeneration()">
@@ -82,32 +88,32 @@
               <div class="form-group">
                 <div class="div-car mb-3">
                   <label class="form-label">Select Brand</label>
-                  <select class="form-select" formControlName="brandId" (change)="onBrandChange()">
+                  <select class="form-select" formControlName="brandId" (change)="onBrandChange()" id="gBrandSel">
                     <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
                   </select>
                 </div>
                 <div class="div-car mb-3">
                   <label class="form-label">Select Model</label>
-                  <select class="form-select" formControlName="modelId" >
+                  <select class="form-select" formControlName="modelId" id="gModelSel">
                     <option *ngFor="let model of models" [value]="model.id">{{ model.name }}</option>
                   </select>
                 </div>
               </div>
               <div class="mb-3" >
                 <label class="form-label">Version Name</label>
-                <input type="text" class="form-control" formControlName="name" placeholder="Enter version name">
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter version name" id="gName">
               </div>
 
               <div class="form-group mb-3">
                 <div style="flex: 1;">
-                  <label for="select21">Production start year</label>
-                  <select formControlName="startYear" class="form-select date-picker">
+                  <label for="select11"  class="form-label">Production start year</label>
+                  <select formControlName="startYear" class="form-select date-picker" id="select11">
                     <option *ngFor="let year of years" [value]="year">{{ year }}</option>
                   </select>
                 </div>
                 <div style="flex: 1;">
-                  <label for="select22">Production end year</label>
-                  <select formControlName="endYear" class="form-select date-picker">
+                  <label for="select12"  class="form-label">Production end year</label>
+                  <select formControlName="endYear" class="form-select date-picker" id="select12">
                     <option *ngFor="let year of years" [value]="year">{{ year }}</option>
                   </select>
                 </div>
@@ -119,41 +125,43 @@
               </div>
             </form>
           </div>
+
+            <!--Version Form-->
           <div *ngIf="activeTab === 'versions'">
             <h2 class="mb-4">Add Version</h2>
             <form [formGroup]="versionForm" (ngSubmit)="submitVersion()">
               <div class="mb-3">
               <label class="form-label">Select Brand</label>
-              <select class="form-select" formControlName="brandId" (change)="onBrandChange()">
+              <select class="form-select" formControlName="brandId" (change)="onBrandChange()" id="vBrandSel">
                 <option *ngFor="let brand of brands" [value]="brand.nameId">{{ brand.name }}</option>
               </select>
               </div>
               <div class="mb-3">
                 <label class="form-label">Select Model</label>
-                <select class="form-select" formControlName="modelId" >
+                <select class="form-select" formControlName="modelId"  id="vModelSel">
                   <option *ngFor="let model of models" [value]="model.id">{{ model.name }}</option>
                 </select>
               </div>
               <div class="mb-3">
                 <label class="form-label">Select Generation</label>
-                <select class="form-select" formControlName="modelId" >
+                <select class="form-select" formControlName="modelId"  id="vGenSel">
                   <option *ngFor="let generation of generations" [value]="generation.id">{{ generation.name }}</option>
                 </select>
               </div>
               <div class="mb-3" >
                 <label class="form-label">Version Name</label>
-                <input type="text" class="form-control" formControlName="name" placeholder="Enter version name">
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter version name" id="vName">
               </div>
 
               <div class="form-group mb-3">
                 <div style="flex: 1;">
-                  <label for="select21">Production start year</label>
+                  <label for="select21"  class="form-label">Production start year</label>
                   <select formControlName="startYear" class="form-select date-picker" id="select21">
                     <option *ngFor="let year of years" [value]="year">{{ year }}</option>
                   </select>
                 </div>
                 <div style="flex: 1;">
-                  <label for="select22">Production end year</label>
+                  <label for="select22" class="form-label">Production end year</label>
                   <select formControlName="endYear" class="form-select date-picker" id="select22">
                     <option *ngFor="let year of years" [value]="year">{{ year }}</option>
                   </select>

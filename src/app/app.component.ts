@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   constructor(
     private oauthService: OAuthService,
     private authService: AuthService,
-    private http: HttpClient
   ) {
     this.title = 'SamochodyOne';
   }
@@ -50,26 +49,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-  getHelloText() {
-    console.log(this.oauthService.getAccessTokenExpiration());
-    this.http
-      .get<{ message: string }>(`${this.helloUrl}/brands/hello`, {
-        headers: { Authorization: 'Bearer ' + this.oauthService.getAccessToken() },
-      })
-      .subscribe((result) => {
-        if (this.oauthService.hasValidAccessToken()) {
-          this.helloText = result.message;
-        } else {
-          console.log('Token is not valid');
-        }
-      });
-    console.log(
-      'Access Token:',
-      this.oauthService.getAccessToken(),
-      '\n\nIsValid?:',
-      this.oauthService.hasValidAccessToken()
-    );
-  }
+
 
   private refreshAccessToken(): void {
     this.oauthService

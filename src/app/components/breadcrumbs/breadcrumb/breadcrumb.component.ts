@@ -30,64 +30,7 @@ import {Subscription} from 'rxjs';
 }*/
 
 export class BreadcrumbComponent implements OnInit{
-/*  breadcrumbs: { label: string; url: string }[] = [];*/
 
-/*  constructor(private router: Router, private route: ActivatedRoute) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.breadcrumbs = this.createBreadcrumbs(this.route.root);
-      }
-    });
-  }
-
-  private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: any[] = []): any[] {*/
-/*  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.breadcrumbs = this.createBreadcrumbs(this.activatedRoute.root);
-    });
-  }
-
-
-  private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: Array<{ label: string, url: string }> = []): Array<{ label: string, url: string }> {
-    const children: ActivatedRoute[] = route.children;
-
-    if (children.length === 0) {
-      return breadcrumbs;
-    }
-
-    for (const child of children) {
-      const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
-      if (routeURL !== '') {
-        url += `/${routeURL}`;
-      }
-
-      breadcrumbs.push({
-        label: child.snapshot.data['breadcrumb'] || routeURL,
-        url
-      });
-/!*      console.log("Url", url)
-      console.log("Bread", breadcrumbs)*!/
-      this.createBreadcrumbs(child, url, breadcrumbs);
-    }
-
-    return breadcrumbs;
-  }*/
-
-
-
-
-
-
-/*  breadcrumbs: Array<{ label: string, url: string }> = [];
-
-  constructor(private breadcrumbService: BreadcrumbService) {}
-
-  ngOnInit(): void {
-
-    this.breadcrumbs = this.breadcrumbService.breadcrumbs;
-  }*/
 
 
   breadcrumbs: Array<{ label: string, url: string }> = [];

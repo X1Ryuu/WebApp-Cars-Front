@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="">Home</a>
+            <a class="nav-link active" aria-current="page"  routerLink="/">Home</a>
           </li>
 
 <!--          <li class="nav-item">
@@ -34,18 +34,39 @@
 <!--
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
 -->
-                <li>
+                <li class="drop-field">
                     <a class="nav-link px-3"
-                       routerLink="/vehicles"><!--Contacts-->Archives</a>
+                       routerLink="/archives"><!--Contacts-->Archives</a>
+                </li>
+                <li class="drop-field">
+                    <a class="nav-link px-3"
+                       routerLink="/sales"><!--Contacts-->For Sale</a>
                 </li>
             </ul>
           </li>
+
+            <li class="nav-item dropdown" *ngIf="authService.isAdmin">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Updates
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link px-3"
+                           routerLink="/edit-archives"><!--Contacts-->Archives</a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-3"
+                           routerLink="/edit-archives"><!--Contacts-->Sales</a>
+                    </li>
+                </ul>
+            </li>
+
           <li class="nav-item">
             <a *ngIf="authService.isAdmin" aria-current="page" class="nav-link active" href="http://localhost:8080/h2-console">H2 DB</a>
           </li>
-          <li class="nav-item">
+<!--          <li class="nav-item">
             <a *ngIf="authService.isAdmin" aria-current="page" class="nav-link active" routerLink="/editions">Updates</a>
-          </li>
+          </li>-->
 
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>

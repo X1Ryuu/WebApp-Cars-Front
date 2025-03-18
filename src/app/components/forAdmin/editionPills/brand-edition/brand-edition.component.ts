@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {Brand}  from '../../../../entities/brand/brand';
 import {BrandService} from '../../../../services/brand/brand-service.service';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment.development';
 import { OAuthService } from 'angular-oauth2-oidc';
@@ -12,9 +12,10 @@ import { OAuthService } from 'angular-oauth2-oidc';
   standalone: true,
   imports: [
     NgForOf,
-/*    RouterLink,*/
+    /*    RouterLink,*/
     NgIf,
     ReactiveFormsModule,
+    FormsModule,
   ],
   templateUrl: './brand-edition.component.html',
   styleUrl: './brand-edition.component.css'
@@ -25,6 +26,8 @@ export class BrandEditionComponent {
   brandEditForm: FormGroup;
   url: string = environment.apiUrl
   errorMessage: string | null = null;
+  selectedBrands: number[] = [];
+
   constructor(private http: HttpClient, private fb: FormBuilder,
               private brandService: BrandService, private oauthService: OAuthService) {
     this.brandAddForm = this.fb.group({
@@ -43,6 +46,20 @@ export class BrandEditionComponent {
     });
   }
 
+  toggleBrandSelection(brandId: number): void {
+    const index = this.selectedBrands.indexOf(brandId);
+
+    if (index > -1) {
+      this.selectedBrands.splice(index, 1);
+    } else {
+      this.selectedBrands.push(brandId);
+    }
+    console.log(this.selectedBrands, index)
+  }
+
+  changed(id: number){
+    console.log(id)
+  }
   reallyTouched(){
     return (this.brandAddForm.get('name')?.touched
       && this.brandAddForm.get('logo')?.touched

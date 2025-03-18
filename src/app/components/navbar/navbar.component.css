@@ -21,6 +21,9 @@
   */
 }
 
+.dropdown-menu{
+  width: 100px;
+}
 
 .nav-item a:hover{
   cursor: pointer;

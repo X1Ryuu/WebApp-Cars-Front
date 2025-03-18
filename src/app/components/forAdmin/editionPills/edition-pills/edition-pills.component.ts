@@ -28,7 +28,7 @@ import {AddModalComponent} from '../../modals/add-modal/add-modal.component';
   styleUrl: './edition-pills.component.css'
 })
 export class EditionPillsComponent implements OnInit, OnDestroy {
-  activeTab: string = '';
+  activeTab: string = 'brands';
   setActiveTab(tab: string) {
     this.activeTab = tab;
   }
@@ -40,21 +40,21 @@ export class EditionPillsComponent implements OnInit, OnDestroy {
   constructor(private breadcrumbService: BreadcrumbService) {}
 
   ngOnInit(): void {
-    this.breadcrumbSubscription = this.breadcrumbService.breadcrumbs$.subscribe(
+/*    this.breadcrumbSubscription = this.breadcrumbService.breadcrumbs$.subscribe(
       (breadcrumbs) => {
         this.breadcrumbs = breadcrumbs;
       }
-    );
+    );*/
   }
 
   ngOnDestroy(): void {
-    if (this.breadcrumbSubscription) {
+/*    if (this.breadcrumbSubscription) {
       this.breadcrumbSubscription.unsubscribe();
-    }
+    }*/
   }
 
-  @ViewChild('modalRef') modal!: AddModalComponent;
+/*  @ViewChild('modalRef') modal!: AddModalComponent;
   openModal() {
     this.modal.openModal();
-  }
+  }*/
 }

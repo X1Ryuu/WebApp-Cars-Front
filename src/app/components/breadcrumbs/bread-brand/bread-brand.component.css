@@ -1,18 +1,22 @@
 .container{
   width: 100%;
+  /*
   background-color: #C3C3C3;
+  */
 }
 
 .brand-item{
   width: 100px;
+  /*
   background-color: #ff9696;
+  */
 }
 
-.brand-item-container{
+/*.brand-item-container{
   width: 100px;
   background-color: bisque;
   justify-content: center;
-}
+}*/
 
 
 /*@media (max-width: 576px) {

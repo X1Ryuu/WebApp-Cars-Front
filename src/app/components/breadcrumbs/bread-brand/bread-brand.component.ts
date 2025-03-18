@@ -29,10 +29,25 @@ export class BreadBrandComponent implements OnInit{
   ngOnInit(): void {
     this.brandService.findAll().subscribe((brands) => {
       this.brands = brands;
+      /*console.log(this.brands[0].models[0])*/
+     // this.show();
     });
+
   }
-  show(brand: Brand){
-    console.log(brand);
+/*  show(brand: Brand){
+
+      console.log(brand);
+
+
+  }*/
+
+  show(){
+    for(let brand of this.brands){
+      console.log(brand);
+      for(let model of brand.models){
+        console.log(model);
+      }
+    }
   }
 
 

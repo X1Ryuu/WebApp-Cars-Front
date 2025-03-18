@@ -17,8 +17,10 @@
   </thead>
   <tbody>
   <tr *ngFor="let brand of brands">
+
     <td class="only-td align-middle">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <input class="form-check-input" type="checkbox" [value]="brand.id"
+             (change)="toggleBrandSelection(brand.id)" [checked]="selectedBrands.includes(brand.id)">
 <!--      <div class="form-check">
 
       </div>-->
@@ -27,7 +29,9 @@
     <td>{{ brand.name }}</td>
     <td>{{ brand.logo }}</td>
     <td>{{ brand.name }}</td>
+<!--
     <td><a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit" (click)="onOpenModalEdit(brand)"><i class="fa fa-pencil"></i></a></td>
+-->
   </tr>
   </tbody>
 </table>

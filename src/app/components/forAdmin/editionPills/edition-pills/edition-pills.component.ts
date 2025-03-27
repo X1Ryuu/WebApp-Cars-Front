@@ -20,7 +20,7 @@ import {AddModalComponent} from '../../modals/add-modal/add-modal.component';
     /*NgForOf,
     RouterOutlet,
     RouterLink,*/
-    AddModalComponent,
+
     BrandEditionComponent,
     ModelEditionComponent
   ],

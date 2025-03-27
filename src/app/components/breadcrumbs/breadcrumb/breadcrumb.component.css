@@ -1,13 +1,36 @@
 .container{
-  width: 70%;
+  width: 80%;
   /*
   background-color: #0b66b6;
   */
 
 }
 
-.breadcrumb, .breadcrumb-div{
+.bread-container{
   width: 80%;
+}
+
+.add{
+  background-color: #78b36b;
+}
+
+.add:hover{
+  background-color: #2fb312;
+}
+
+.del{
+  background-color: #b36b6b;
+}
+
+.del:hover{
+  background-color: #b32424;
+}
+
+
+
+.breadcrumb, .breadcrumb-div{
+
+  width: 90%;
   background-color: #C3C3C3;
 }
 

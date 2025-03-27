@@ -6,5 +6,10 @@
 
 .img-container  {
   aspect-ratio: 3/2;
+
   background-color: white;
+}
+
+.main-model-container{
+  width: 200px;
 }

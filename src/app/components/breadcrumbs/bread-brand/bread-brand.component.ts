@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Brand} from '../../../entities/brand/brand';
 import {BrandService} from '../../../services/brand/brand-service.service';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {BrandComponent} from '../../items/brand/brand.component';
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-bread-brand',
@@ -12,6 +13,7 @@ import {BrandComponent} from '../../items/brand/brand.component';
     NgForOf,
     BrandComponent,
     RouterLink,
+
 
   ],
   templateUrl: './bread-brand.component.html',
@@ -24,6 +26,7 @@ export class BreadBrandComponent implements OnInit{
 
   constructor(
     private brandService: BrandService,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {

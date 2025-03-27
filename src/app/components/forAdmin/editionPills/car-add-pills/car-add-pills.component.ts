@@ -5,19 +5,20 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {BrandService} from '../../../../services/brand/brand-service.service';
 import {ModelService} from '../../../../services/model/model-service.service';
 import {VersionService} from '../../../../services/version/version-service.service';
-import {GenerationService} from '../../../../services/generation/generation.service';
+import {GenerationService} from '../../../../services/generation/generation-service.service';
 import {Brand} from '../../../../entities/brand/brand';
+import {AddModalComponent} from "../../modals/add-modal/add-modal.component";
 
 
 @Component({
   selector: 'app-car-add-pills',
   standalone: true,
-  imports: [
-    NgIf,
-    ReactiveFormsModule,
-    NgForOf,
-    NgClass
-  ],
+    imports: [
+        NgIf,
+        ReactiveFormsModule,
+        NgForOf,
+        NgClass,
+    ],
   templateUrl: './car-add-pills.component.html',
   styleUrl: './car-add-pills.component.css'
 })
@@ -116,7 +117,6 @@ export class CarAddPillsComponent implements OnInit {
 
 
   loadBrands() {
-
     this.brandService.findAll().subscribe((brands) => {
       this.brands = this.brands.concat(brands);
     });
@@ -176,25 +176,10 @@ export class CarAddPillsComponent implements OnInit {
 
   submitModel() {
 
-
-/*    console.log(this.modelForm.value.name+", "+this.modelForm.value.brandId+", "+this.modelForm.value.startYear+", "+this.modelForm.value.endYear)
-    console.log(this.modelForm.value+", "+this.modelForm.valid+", "+this.oj)*/
-      //  console.log(this.brandForm.value)
-
-    const selectedBrandId = this.modelForm.value.brandName;
-    console.log(this.brands, this.modelForm.value);
-
     const modelData = {
       name: this.modelForm.value.name,
-/*      startYear: this.modelForm.value.startYear,
-      endYear: this.modelForm.value.endYear,*/
- //     brand: this.brand,
-      brandId: selectedBrandId // Przekazujemy brand jako obiekt
+      brandName: this.modelForm.value.brandName // Przekazujemy brand jako obiekt
     };
-    console.log(modelData, selectedBrandId);
-
-
-
 
       if (this.modelForm.valid) {
         console.log("Valid model form")

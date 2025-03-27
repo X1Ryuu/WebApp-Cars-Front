@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GenerationService } from './generation.service';
+import { GenerationService } from './generation-service.service';
 
-describe('GenerationService', () => {
+describe('GenerationServiceService', () => {
   let service: GenerationService;
 
   beforeEach(() => {

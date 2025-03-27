@@ -8,10 +8,8 @@
 }
 
 .navbar{
-  /*
-  background-color: #1e1e1e;
-  */
-  background-color: #eaeaea;
+/*  background-color: #1A1A1D ;*/
+  background-color: #a1a1a1;
 /*  box-shadow: black 0 1px 3px;*/
 }
 
@@ -27,5 +25,8 @@
 
 .nav-item a:hover{
   cursor: pointer;
+  color: rgba(255, 0, 0, 0.71);
+  /*
   color: #c13584;
+  */
 }

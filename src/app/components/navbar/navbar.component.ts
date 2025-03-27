@@ -23,12 +23,34 @@ import {AppComponent} from "../../app.component";
 })
 export class NavbarComponent {
   constructor(public authService: AuthService) {}
-  login(event: MouseEvent): void {
+  login(): void {
     this.authService.login();
   }
 
-  logout(event: MouseEvent): void {
+/*  logout(): void {
     this.authService.logout();
+    sessionStorage.clear();
+    localStorage.clear();
+  }*/
+
+  logout(): void {
+    // Wyczyść localStorage/sessionStorage
+
+    this.authService.logout();
+    sessionStorage.clear();
+    localStorage.clear();
+
+
+/*    // Dane Keycloak
+    const keycloakBaseUrl = 'http://localhost:9090'; // zmień na adres swojego Keycloak
+    const realm = 'my-realm'; // zamień na nazwę swojego realm'u
+    const redirectUri = encodeURIComponent(window.location.origin); // np. http://localhost:4200
+
+    // Finalny URL do wylogowania
+    const logoutUrl = `${keycloakBaseUrl}/realms/${realm}/protocol/openid-connect/logout?redirect_uri=${redirectUri}`;
+
+    // Przekierowanie do Keycloak logout
+    window.location.href = logoutUrl;*/
   }
 
  // protected readonly AppComponent = AppComponent;

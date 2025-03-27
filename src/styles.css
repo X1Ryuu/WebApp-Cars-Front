@@ -7,10 +7,8 @@ body{
   /*
   background-color: #0E0E20;
   */
-  /*
   background-color: #eaeaea;
-  */
-  background-color: white;
+
 }
 #main-class {
   width: 80%;
@@ -102,10 +100,7 @@ main {
   height: 10vh;
 }
 
-.navbar{
-  background-color: #222831;
 
-}
 
 
 

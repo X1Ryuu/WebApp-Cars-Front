@@ -18,6 +18,16 @@ export class GenerationService {
     return this.http.get<Generation[]>(`${this.generationsUrl}/all`);
   }
 
+  public getGenerationsByModel(nameId: number): Observable<Generation[]>{
+    console.log(nameId);
+    return this.http.get<Generation[]>(`${this.generationsUrl}/${nameId}`);
+  }
+
+  public getGenerationsByModelName(name: string | null): Observable<Generation[]>{
+    //console.log("Modelname: ", name);
+    return this.http.get<Generation[]>(`${this.generationsUrl}/${name}`);
+  }
+
 
 
   public addGeneration(generation: any){

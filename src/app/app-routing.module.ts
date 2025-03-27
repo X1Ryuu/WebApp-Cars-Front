@@ -20,27 +20,65 @@ export const routes: Routes = [
 /*
     {path: 'edit-archives'},
 */
+/*    {path: 'editions', component: EditionPillsComponent},
     {path: 'archives', component: BreadcrumbComponent, data:{type: 'normal'}, children: [
-        {path: '', component: BreadBrandComponent},//brand
+        {path: '', component: BreadBrandComponent},//brands
         {path: ':brandName', children: [
-            {path: '', component: BreadModelComponent},//model
-            {path: ':generationId', children: [
-                {path: '', component: BreadGenerationComponent},//generation
-                {path: ':versionId', children: [
-                    {path: '', component: BreadVersionComponent},//version
-                    {path: ':engineId', component: BreadEngineComponent}
-              ]}
+            {path: '', component: BreadModelComponent},//models
+            {path: ':modelName', children: [
+                {path: 'gens', children: [
+                    {path: '', component: BreadGenerationComponent},
+                    {path: ':generationName', children: [
+                        {path: '', component: BreadVersionComponent},//versions
+                        {path: ':versionName', children: [
+                                {path: '', component: BreadEngineComponent},//version
+                                //{path: ':engineId', component: }
+                        ]}
+                    ]},
+                ]},//generations
+                {path: 'vers', children: [
+                    {path: '', component: BreadVersionComponent},
+                    {path: ':versionName', children: [
+                        {path: '', component: BreadEngineComponent}
+                    ]}
+                ]},
+
             ]},
-            {path: ':versionId', children: [
-              {path: '', component: BreadVersionComponent},//version
-              {path: ':engineId', component: BreadEngineComponent}
-            ]}
+
         ]},
-    ]},
+    ]},*/
 
 
+    {path: 'editions', component: EditionPillsComponent},
+    {path: 'archives', component: BreadcrumbComponent, data:{type: 'normal'}, children: [
+            {path: '', component: BreadBrandComponent},//brands
+            {path: ':brandName', children: [
+                {path: '', component: BreadModelComponent},//models
+                {path: ':modelName/gens',children:[
+                    {path: '', component: BreadGenerationComponent},
+                    {path: ':generationName', children: [
+                        {path: '', component: BreadVersionComponent},//versions
+                        {path: ':versionName', children: [
+                            {path: '', component: BreadEngineComponent},//version
+                            //{path: ':engineId', component: }
+                        ]}
+                    ]},
+                ]},
+                {path: ':modelName/vers', component: BreadVersionComponent},
+
+            ]},
+        ]},
 
 
+/*    {path: 'archives', component: BreadcrumbComponent, data:{type: 'normal'}, children: [
+        {path: '', component: BreadBrandComponent},//brands
+        {path: ':brandName', component: BreadModelComponent},//models
+        {path: ':brandName/:modelName/gens', component: BreadGenerationComponent},//generations
+        {path: ':brandName/:modelName/gens/:generationName', component: BreadVersionComponent},//versions
+        {path: ':brandName/:modelName/gens/:generationName/:versionName', component: BreadEngineComponent},//engines
+        {path: ':brandName/:modelName/', component: BreadVersionComponent},//versions
+        {path: ':brandName/:modelName/:versionName', component: BreadEngineComponent},//engines
+    ]}*/
 ];
 
 @NgModule({

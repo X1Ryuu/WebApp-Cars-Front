@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Model} from '../../../entities/model/model';
 import {ModelService} from '../../../services/model/model-service.service';
-import {BreadcrumbService} from '../../../services/breadcrumbs/breadcrumb.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {NgForOf} from '@angular/common';
 import {BreadcrumbComponent} from '../breadcrumb/breadcrumb.component';
@@ -17,7 +16,7 @@ import {Brand} from '../../../entities/brand/brand';
   standalone: true,
   imports: [
     NgForOf,
-    RouterLink,
+
     ItemComponent
   ],
   templateUrl: './bread-model.component.html',
@@ -26,33 +25,50 @@ import {Brand} from '../../../entities/brand/brand';
 export class BreadModelComponent implements OnInit{
 
   brandName: string | null = '';
-  brand: Brand | undefined;
   models: any[] = [];
   data: string ='';
 
-  constructor(private route: ActivatedRoute, private modelService: ModelService, private brandService: BrandService) {}
+  constructor(private route: ActivatedRoute, private modelService: ModelService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log("Name: "+this.brandName +", Data: "+ this.data);
+    //console.log("Name: "+this.brandName +", Data: "+ this.data, ", Brand: "+this.brand);
     // Pobierz parametr brandId z trasy
     this.route.paramMap.subscribe(params => {
       this.brandName = params.get('brandName');
-      this.brandService.getBrandByName(this.brandName).subscribe(brand => {
-        this.brand = brand;
-
-        this.loadModels(this.brand.id);
-      });
+      console.log(this.brandName)
+      this.modelService.getModelsByBrandName(this.brandName).subscribe(models => {
+          this.models = models;
+          console.log(this.models);
+      })
 
     });
 
   }
+/*  getNavigationPath(model: Model){
+    console.log(model.generations, model.versions);
+    console.log(model, this.brandName);
+    if (model.generations && model.generations.length > 0) {
+      this.router.navigate(['archives', this.brandName, model.name, 'gens']);
+/!*
+      return [model.name]; // Przekierowanie do generacji
+*!/
+    } else {
+/!*
+      return [model.name, 'gen']; // Przekierowanie do wersji
+*!/
+      this.router.navigate(['archives', this.brandName, model.name]);
 
-  loadModels(brandId: number): void {
-    this.modelService.getModelsByBrand(brandId).subscribe(models => {
-      console.log("Models: "+models, brandId);
-      this.models = models;
-    });
+    }
+  }*/
+
+
+  getNavigationPath(model: Model): void {
+    if (model.generations && model.generations.length > 0) {
+      // Jeśli są generacje, przekieruj do pierwszej generacji
+      this.router.navigate(['archives', this.brandName, model.name, 'gens']);
+    } else if (model.versions && model.versions.length > 0) {
+      // Jeśli są wersje, przekieruj do pierwszej wersji
+      this.router.navigate(['archives', this.brandName, model.name, 'vers']);
+    }
   }
-
-
 }

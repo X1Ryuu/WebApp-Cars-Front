@@ -1,18 +1,15 @@
-<p>bread-generation works!</p>
-
-
-<div class="container d-flex flex-wrap justify-content-evenly">
+<div class="d-flex flex-wrap justify-content-evenly">
   <div class="model-item  my-2 mx-1" *ngFor="let generation of generations">
     <!--
         <a (click)="selectBrand(brand)">{{ brand.name }}</a>
     -->
-    <div class="model-item-container">
-      {{generation.brandId}}
+
+
       <!--
             <app-model [model]="model" class="model-container my-1" [routerLink]="[model.nameId]"></app-model>
       -->
-      <app-item [data]="generation.name + ' (' + generation.startYear + ' - ' + generation.endYear + ')'" [routerLink]="[generation.nameId]"></app-item>
-    </div>
+      <app-item [name]="generation.name" [date]="'(' + generation.startYear + ' - ' + generation.endYear + ')'" (click)="getNavigationPath(generation)"></app-item>
+
 
   </div>
 </div>

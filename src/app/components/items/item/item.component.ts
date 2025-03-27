@@ -9,10 +9,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 
 export class ItemComponent implements OnInit{
-  @Input() data!: string;
-  thing: string = "doing good";
+  @Input() date!: string;
+  @Input() name!: string;
   ngOnInit(): void {
-    this.thing = this.data;
-  }
 
+  }
 }

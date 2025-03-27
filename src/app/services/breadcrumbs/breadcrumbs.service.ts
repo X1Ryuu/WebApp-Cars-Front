@@ -1,3 +1,4 @@
+/*
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -36,3 +37,4 @@ export class BreadcrumbsService {
     return breadcrumbs;
   }
 }
+*/

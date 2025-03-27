@@ -10,9 +10,11 @@ import {AuthInterceptor} from './auth/auth.interceptor';
 export const authCodeFlowConfig: AuthConfig = {
   issuer: 'http://localhost:9090/realms/my-realm',
   tokenEndpoint: 'http://localhost:9090/realms/my-realm/protocol/openid-connect/token',
-  //redirectUri: window.location.origin,
-  redirectUri: 'http://localhost:4200',
+  redirectUri: window.location.origin,
+  //redirectUri: 'http://localhost:4200',
 /*  redirectUri: 'http://localhost:4200',*/
+  logoutUrl: 'http://localhost:9090/realms/my-realm/protocol/openid-connect/logout',
+  postLogoutRedirectUri: window.location.origin,
   clientId: 'angular-app',
   responseType: 'code',
   scope: 'openid profile',
@@ -26,7 +28,8 @@ function initializeOAuth(oauth: OAuthService): Promise<void>{
     oauth.setupAutomaticSilentRefresh();
     oauth.loadDiscoveryDocumentAndTryLogin().then(() => {
       resolve();
-      console.log("Token: ", oauth.getAccessToken());
+      console.log(oauth.getIdToken())
+      //console.log("Token: ", oauth.getAccessToken());
     }).catch(err => {
       console.error('Error during login:', err);
     });

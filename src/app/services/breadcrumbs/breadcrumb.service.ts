@@ -78,7 +78,6 @@ export class BreadcrumbService {
 export class BreadcrumbService {
   private breadcrumbsSubject = new BehaviorSubject<Array<{ label: string, url: string }>>([]);
   breadcrumbs$ = this.breadcrumbsSubject.asObservable();
-  private good: String = "";
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -95,34 +94,58 @@ export class BreadcrumbService {
     }
 
     for (const child of children) {
-      const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
 
+      const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
       if (routeURL !== '') {
         url += `/${routeURL}`;
       }
 
+      let label = child.snapshot.data['breadcrumb'] || routeURL;
 
 
-/*      let label = child.snapshot.data['breadcrumb'];
-      if (!label && child.snapshot.paramMap.has('brandId')) {
-        label = child.snapshot.paramMap.get('brandId'); // Ustawienie ID jako breadcrumb, np. "Audi"
+      console.log("Label: ", label, label.includes('/gens', '/vers'));
+      if(label.includes('/gens') || label.includes('/vers')){
+        label = label.split("/")[0];
+        console.log(label);
+      }
+      if(label==='archives')label = this.capitalizeFirstLetter(label);
+
+
+      //console.log(child.snapshot.paramMap);
+      // Jeśli to generacja, dodaj nazwę generacji
+/*      if (child.snapshot.paramMap.has('generationName')) {
+        const generationName = child.snapshot.paramMap.get('generationName');
+        label = generationName ? generationName : 'Generation';
+      }
+
+      if (child.snapshot.paramMap.has('versionName')) {
+        const versionName = child.snapshot.paramMap.get('versionName');
+        label = versionName ? versionName : 'Version';
       }*/
 
-/*      breadcrumbs.push({
-        label: child.snapshot.data['breadcrumb'] || routeURL,
-        url
-      });*/
-//      const label = child.snapshot.data['breadcrumb'] || routeURL;
-      const rawLabel = child.snapshot.data['breadcrumb'] || routeURL;
-      const label = this.capitalizeFirstLetter(rawLabel);
 
-      if (label) {
-
+      if (/*label !== 'gens' && label !== 'vers' && */label !== '' && label!== 'undefined' && !breadcrumbs.some(b => b.label === label)) {
         breadcrumbs.push({ label, url });
       }
-      console.log('Breadcrumb:', breadcrumbs);
+
+
+/*      let label = child.snapshot.data['breadcrumb'] || routeURL;
+      if (routeURL === 'gen') {
+        label = 'Generation';  // Może być inna nazwa
+      } else if (routeURL === 'version') {
+        label = 'Version';  // Może być inna nazwa
+      }
+      if(label!=='gens'){
+        breadcrumbs.push({ label, url });
+      }*/
+
+      // Zapisz breadcrumb
+
+
+      //console.log('Breadcrumb:', breadcrumbs);
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
+
 
     return breadcrumbs;
   }

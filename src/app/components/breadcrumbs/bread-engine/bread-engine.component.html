@@ -11,7 +11,7 @@
       <!--
             <app-model [model]="model" class="model-container my-1" [routerLink]="[model.nameId]"></app-model>
       -->
-      <app-item [data]="engine.name + ' (' + engine.from + ' - ' + engine.from + ')'" [routerLink]="[engine.nameId]"></app-item>
+      <app-item [name]="engine.name" [date]="'(' + engine.from + ' - ' + engine.from + ')'" [routerLink]="[engine.nameId]"></app-item>
     </div>
 
   </div>

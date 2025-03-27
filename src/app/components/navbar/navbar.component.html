@@ -14,63 +14,43 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page"  routerLink="/">Home</a>
           </li>
-
-<!--          <li class="nav-item">
-            <a class="nav-link active"
-               aria-current="page" routerLink="/vehicles" role="button">&lt;!&ndash;Contacts&ndash;&gt;Archives</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active"
-               aria-current="page" routerLink="/vehicles" role="button">&lt;!&ndash;Contacts&ndash;&gt;Available</a>
-          </li>-->
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  routerLink="/">New cars</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  routerLink="/">User cars</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  routerLink="/archives">Archives</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  routerLink="/">About me</a>
+            </li>
+<!--            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  routerLink="/">Home</a>
+            </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Vehicles
             </a>
             <ul class="dropdown-menu">
-<!--                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>--->
-<!--
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
--->
+
                 <li class="drop-field">
                     <a class="nav-link px-3"
-                       routerLink="/archives"><!--Contacts-->Archives</a>
+                       routerLink="/archives">&lt;!&ndash;Contacts&ndash;&gt;Archives</a>
                 </li>
                 <li class="drop-field">
                     <a class="nav-link px-3"
-                       routerLink="/sales"><!--Contacts-->For Sale</a>
+                       routerLink="/sales">&lt;!&ndash;Contacts&ndash;&gt;For Sale</a>
                 </li>
             </ul>
-          </li>
-
-            <li class="nav-item dropdown" *ngIf="authService.isAdmin">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Updates
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link px-3"
-                           routerLink="/edit-archives"><!--Contacts-->Archives</a>
-                    </li>
-                    <li>
-                        <a class="nav-link px-3"
-                           routerLink="/edit-archives"><!--Contacts-->Sales</a>
-                    </li>
-                </ul>
-            </li>
-
+          </li>-->
           <li class="nav-item">
-            <a *ngIf="authService.isAdmin" aria-current="page" class="nav-link active" href="http://localhost:8080/h2-console">H2 DB</a>
+            <a *ngIf="authService.isAble" aria-current="page" class="nav-link active" href="http://localhost:8080/h2-console">H2 DB</a>
           </li>
 <!--          <li class="nav-item">
-            <a *ngIf="authService.isAdmin" aria-current="page" class="nav-link active" routerLink="/editions">Updates</a>
-          </li>-->
-
-          <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
+          </li>-->
         </ul>
         <form class="d-flex" role="search">
           <div class="input-group">
@@ -80,8 +60,8 @@
         <ul class="navbar-nav mb-2 mb-lg-0 me-5">
 
           <li class="nav-item">
-            <a *ngIf="!authService.isLoggedIn()" aria-current="page" class="nav-link active" (click)="login($event)">Login</a>
-            <a *ngIf="authService.isLoggedIn()" aria-current="page" class="nav-link active" (click)="logout($event)">Logout</a>
+            <a *ngIf="!authService.isLoggedIn()" aria-current="page" class="nav-link active" (click)="login()">Login</a>
+            <a *ngIf="authService.isLoggedIn()" aria-current="page" class="nav-link active" (click)="logout()">Logout</a>
           </li>
 
 

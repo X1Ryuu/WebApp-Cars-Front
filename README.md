@@ -7,7 +7,7 @@ This is my personal project, still in development - gradually will add planned f
 ## Requirements
 - Node.js installed
 - Angular CLI installed
-- Run 'npm install'  in project folder after cloning
+- Run `npm install`  in project folder after cloning
 
 ## Technologies
 - Angular

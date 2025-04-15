@@ -3,70 +3,6 @@ import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import { filter } from 'rxjs/operators';
 import {BehaviorSubject} from 'rxjs';
 
-/*@Injectable({
-  providedIn: 'root'
-})
-export class BreadcrumbService {
-  /!*protected breadcrumb: { label: string, url: string }[] = [];
-
-  constructor(private router: Router) {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => this.updateBreadcrumbs());
-  }
-
-  getBreadcrumbs(): { label: string, url: string }[] {
-    return this.breadcrumb;
-  }
-
-  setBreadcrumbs(breadcrumbs: { label: string, url: string }[]): void {
-    this.breadcrumb = breadcrumbs;
-  }
-
-  private updateBreadcrumbs(): void {
-    const url = this.router.url;
-    const segments = url.split('/').filter(segment => segment);
-
-    const breadcrumbs = segments.map((segment, index) => {
-      const url = `/${segments.slice(0, index + 1).join('/')}`;
-      return { label: segment, url };
-    });
-
-    this.setBreadcrumbs(breadcrumbs);
-  }*!/
-
-
-  breadcrumbs: Array<{ label: string, url: string }> = [];
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      console.log(this.activatedRoute.root)
-      this.breadcrumbs = this.createBreadcrumbs(this.activatedRoute.root);
-    });
-  }
-
-  private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: Array<{ label: string, url: string }> = []): Array<{ label: string, url: string }> {
-    const children: ActivatedRoute[] = route.children;
-    console.log(breadcrumbs)
-    if (children.length === 0) {
-      return breadcrumbs;
-    }
-
-    for (const child of children) {
-      const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
-      if (routeURL !== '') {
-        url += `/${routeURL}`;
-      }
-
-      breadcrumbs.push({ label: child.snapshot.data['breadcrumb'] || routeURL, url: url });
-      this.createBreadcrumbs(child, url, breadcrumbs);
-    }
-
-    return breadcrumbs;
-  }
-}*/
 
 
 
@@ -100,16 +36,14 @@ export class BreadcrumbService {
         url += `/${routeURL}`;
       }
 
-      let label = child.snapshot.data['breadcrumb'] || routeURL;
+      let label = routeURL;
 
-
-      console.log("Label: ", label, label.includes('/gens', '/vers'));
-      if(label.includes('/gens') || label.includes('/vers')){
-        label = label.split("/")[0];
-        console.log(label);
-      }
+      //console.log(label)
       if(label==='archives')label = this.capitalizeFirstLetter(label);
 
+/*      if(label.includes('gens/') || label.includes('vers/')){
+        label = label.split("/")[1];
+      }*/
 
       //console.log(child.snapshot.paramMap);
       // Jeśli to generacja, dodaj nazwę generacji
@@ -123,10 +57,34 @@ export class BreadcrumbService {
         label = versionName ? versionName : 'Version';
       }*/
 
-
+     // console.log(label.includes('gens/') || label.includes('vers/'));
       if (/*label !== 'gens' && label !== 'vers' && */label !== '' && label!== 'undefined' && !breadcrumbs.some(b => b.label === label)) {
-        breadcrumbs.push({ label, url });
+
+        if(label=="gens" || label=="vers") {
+          let last = breadcrumbs.pop();
+          if (last) {
+            last.url  += "/" + label
+            breadcrumbs.push(last);
+          }
+          //console.log(label, url)
+
+        }else if(label.includes('gens/') || label.includes('vers/')) {
+          let labele = label.split("/")[1];
+          let url = label.split("/")[0];
+          let last = breadcrumbs.pop();
+          if (last) {
+            last.url  += "/" + url
+            breadcrumbs.push(last);
+            url = last.url
+            breadcrumbs.push({label:labele, url});
+          }
+        }else{
+          breadcrumbs.push({label, url});
+        }
+
+
       }
+
 
 
 /*      let label = child.snapshot.data['breadcrumb'] || routeURL;
@@ -143,14 +101,32 @@ export class BreadcrumbService {
 
 
       //console.log('Breadcrumb:', breadcrumbs);
-      return this.createBreadcrumbs(child, url, breadcrumbs);
+      this.createBreadcrumbs(child, url, breadcrumbs);
     }
 
-
+    //console.log("Finito", breadcrumbs)
     return breadcrumbs;
   }
   private capitalizeFirstLetter(text: string): string {
     return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  private formatLabel(label: string): string {
+    if (label.startsWith('gens/')) {
+      const genName = label.split('/')[1];
+      return `Generacja ${genName}`;
+    }
+
+    if (label.startsWith('vers/')) {
+      const versionName = label.split('/')[1];
+      return `Wersja ${versionName}`;
+    }
+
+    if (label === 'archives') {
+      return this.capitalizeFirstLetter(label);
+    }
+
+    return label;
   }
 }
 

@@ -35,10 +35,10 @@ export class BreadModelComponent implements OnInit{
     // Pobierz parametr brandId z trasy
     this.route.paramMap.subscribe(params => {
       this.brandName = params.get('brandName');
-      console.log(this.brandName)
+      //console.log(this.brandName)
       this.modelService.getModelsByBrandName(this.brandName).subscribe(models => {
           this.models = models;
-          console.log(this.models);
+         // console.log(this.models);
       })
 
     });

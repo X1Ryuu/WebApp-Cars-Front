@@ -32,12 +32,11 @@ export class VersionService {
   }
 
   public getVersionsByModel(modelName: string | null): Observable<Version[]>{
-    return this.http.get<Version[]>(`${this.versionsUrl}/model/${modelName}`);
+    return this.http.get<Version[]>(`${this.versionsUrl}/mods/${modelName}`);
   }
 
   public getVersionsByGeneration(generationName: string | null): Observable<Version[]>{
-
-    return this.http.get<Version[]>(`${this.versionsUrl}/gen/${generationName}`);
+    return this.http.get<Version[]>(`${this.versionsUrl}/gens/${generationName}`);
   }
 
 }
